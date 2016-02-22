@@ -1,0 +1,46 @@
+﻿@model CargoModel
+<div class="row">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @(ViewBag.Acao) REGISTRO
+            </div>
+            <div class="panel-body">
+                @if (!ViewData.ModelState.IsValid)
+                {
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-dismissible alert-danger">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                @Html.ValidationSummary()
+                            </div>
+                        </div>
+                    </div>
+                }
+                @if (Model != null && Model.Id > 0)
+                {
+                    @Html.HiddenFor(x => x.Id)
+                }
+                @Html.AntiForgeryToken()
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Nome, new { @class = "control-label", @for = "nome" })
+                    @Html.TextBoxFor(x => x.Nome, new { @class = "form-control", id = "nome", placeholder = "Digite o Cargo..." })
+                    @Html.ValidationMessageFor(x => x.Nome)
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(x => x.Ativo, new { @class = "control-label", @for = "ativo" })
+                    <div class="checkbox">
+                        <label>
+                            @Html.CheckBoxFor(x => x.Ativo, new { id = "ativo" })
+                        </label>
+                    </div>
+                    @Html.ValidationMessageFor(x => x.Ativo)
+                </div>
+                <div class="form-group align-right">
+                    <button type="button" onclick="window.location.href='@Url.Action("Index","Cargo")'" class="btn btn-raised btn-secondary">Cancelar</button>
+                    <button class="btn btn-raised btn-primary">Salvar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

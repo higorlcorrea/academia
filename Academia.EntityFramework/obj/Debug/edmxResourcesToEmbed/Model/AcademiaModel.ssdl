@@ -1,0 +1,382 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AcademiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Cargos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Ativo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="CategoriasTreino">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descricao" Type="nvarchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Exercicios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdMaquina" Type="int" />
+    <Property Name="Nome" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="Descricao" Type="nvarchar(max)" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'academia.dbo.ExerciciosGruposMusculares' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="ExerciciosGruposMusculares">
+    <Key>
+      <PropertyRef Name="IdExercicio" />
+      <PropertyRef Name="IdGrupoMuscular" />
+    </Key>
+    <Property Name="IdExercicio" Type="int" Nullable="false" />
+    <Property Name="IdGrupoMuscular" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GruposMusculares">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar" MaxLength="150" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Maquinas">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Nome" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Imagem" Type="nvarchar" MaxLength="200" />
+    <Property Name="Ativo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Periodos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Descricao" Type="nvarchar" MaxLength="30" Nullable="false" />
+    <Property Name="Ativo" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Treinos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdUsuarioAluno" Type="int" Nullable="false" />
+    <Property Name="IdUsuarioCriacao" Type="int" Nullable="false" />
+    <Property Name="IdCategoriaTreino" Type="int" />
+    <Property Name="Descricao" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="DiaSemana" Type="int" />
+  </EntityType>
+  <EntityType Name="TreinosAbertos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IdTreino" Type="int" Nullable="false" />
+    <Property Name="DataAbertura" Type="datetime" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'academia.dbo.TreinosAbertosExerciciosRealizados' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TreinosAbertosExerciciosRealizados">
+    <Key>
+      <PropertyRef Name="IdTreinoAberto" />
+      <PropertyRef Name="IdExercicio" />
+    </Key>
+    <Property Name="IdTreinoAberto" Type="int" Nullable="false" />
+    <Property Name="IdExercicio" Type="int" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'academia.dbo.TreinosExercicios' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="TreinosExercicios">
+    <Key>
+      <PropertyRef Name="IdTreino" />
+      <PropertyRef Name="IdExercicio" />
+    </Key>
+    <Property Name="IdTreino" Type="int" Nullable="false" />
+    <Property Name="IdExercicio" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="NomeCompleto" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Cpf" Type="nvarchar" MaxLength="14" Nullable="false" />
+    <Property Name="DataNascimento" Type="datetime" Nullable="false" />
+    <Property Name="Ativo" Type="bit" Nullable="false" />
+    <Property Name="AdicionadoPor" Type="int" />
+    <Property Name="Login" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="Senha" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <!--Errors Found During Generation:
+warning 6002: The table/view 'academia.dbo.UsuariosCargos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+  <EntityType Name="UsuariosCargos">
+    <Key>
+      <PropertyRef Name="IdUsuario" />
+      <PropertyRef Name="IdCargo" />
+    </Key>
+    <Property Name="IdUsuario" Type="int" Nullable="false" />
+    <Property Name="IdCargo" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Exercicios_Maquinas">
+    <End Role="Maquinas" Type="Self.Maquinas" Multiplicity="0..1" />
+    <End Role="Exercicios" Type="Self.Exercicios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Maquinas">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Exercicios">
+        <PropertyRef Name="IdMaquina" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExerciciosGruposMusculares_Exercicios">
+    <End Role="Exercicios" Type="Self.Exercicios" Multiplicity="1" />
+    <End Role="ExerciciosGruposMusculares" Type="Self.ExerciciosGruposMusculares" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Exercicios">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExerciciosGruposMusculares">
+        <PropertyRef Name="IdExercicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ExerciciosGruposMusculares_GruposMusculares">
+    <End Role="GruposMusculares" Type="Self.GruposMusculares" Multiplicity="1" />
+    <End Role="ExerciciosGruposMusculares" Type="Self.ExerciciosGruposMusculares" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="GruposMusculares">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ExerciciosGruposMusculares">
+        <PropertyRef Name="IdGrupoMuscular" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Treinos_CategoriasTreino">
+    <End Role="CategoriasTreino" Type="Self.CategoriasTreino" Multiplicity="0..1" />
+    <End Role="Treinos" Type="Self.Treinos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CategoriasTreino">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Treinos">
+        <PropertyRef Name="IdCategoriaTreino" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Treinos_UsuariosAluno">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Treinos" Type="Self.Treinos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Treinos">
+        <PropertyRef Name="IdUsuarioAluno" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Treinos_UsuariosCriacao">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Treinos" Type="Self.Treinos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Treinos">
+        <PropertyRef Name="IdUsuarioCriacao" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TreinosAbertos_Treinos">
+    <End Role="Treinos" Type="Self.Treinos" Multiplicity="1" />
+    <End Role="TreinosAbertos" Type="Self.TreinosAbertos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Treinos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TreinosAbertos">
+        <PropertyRef Name="IdTreino" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TreinosAbertosExerciciosRealizados_Exercicios">
+    <End Role="Exercicios" Type="Self.Exercicios" Multiplicity="1" />
+    <End Role="TreinosAbertosExerciciosRealizados" Type="Self.TreinosAbertosExerciciosRealizados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Exercicios">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TreinosAbertosExerciciosRealizados">
+        <PropertyRef Name="IdExercicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TreinosAbertosExerciciosRealizados_TreinosAbertos">
+    <End Role="TreinosAbertos" Type="Self.TreinosAbertos" Multiplicity="1" />
+    <End Role="TreinosAbertosExerciciosRealizados" Type="Self.TreinosAbertosExerciciosRealizados" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TreinosAbertos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TreinosAbertosExerciciosRealizados">
+        <PropertyRef Name="IdTreinoAberto" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TreinosExercicios_Exercicios">
+    <End Role="Exercicios" Type="Self.Exercicios" Multiplicity="1" />
+    <End Role="TreinosExercicios" Type="Self.TreinosExercicios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Exercicios">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TreinosExercicios">
+        <PropertyRef Name="IdExercicio" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_TreinosExercicios_Treinos">
+    <End Role="Treinos" Type="Self.Treinos" Multiplicity="1" />
+    <End Role="TreinosExercicios" Type="Self.TreinosExercicios" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Treinos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TreinosExercicios">
+        <PropertyRef Name="IdTreino" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Usuarios_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Usuarios1" Type="Self.Usuarios" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Usuarios1">
+        <PropertyRef Name="Id" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsuariosCargos_Cargos">
+    <End Role="Cargos" Type="Self.Cargos" Multiplicity="1" />
+    <End Role="UsuariosCargos" Type="Self.UsuariosCargos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cargos">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UsuariosCargos">
+        <PropertyRef Name="IdCargo" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_UsuariosCargos_Usuarios">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="UsuariosCargos" Type="Self.UsuariosCargos" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuarios">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UsuariosCargos">
+        <PropertyRef Name="IdUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="AcademiaModelStoreContainer">
+    <EntitySet Name="Cargos" EntityType="Self.Cargos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="CategoriasTreino" EntityType="Self.CategoriasTreino" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Exercicios" EntityType="Self.Exercicios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="GruposMusculares" EntityType="Self.GruposMusculares" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Maquinas" EntityType="Self.Maquinas" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Periodos" EntityType="Self.Periodos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Treinos" EntityType="Self.Treinos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TreinosAbertos" EntityType="Self.TreinosAbertos" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="ExerciciosGruposMusculares" EntityType="Self.ExerciciosGruposMusculares" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [ExerciciosGruposMusculares].[IdExercicio] AS [IdExercicio], 
+    [ExerciciosGruposMusculares].[IdGrupoMuscular] AS [IdGrupoMuscular]
+    FROM [dbo].[ExerciciosGruposMusculares] AS [ExerciciosGruposMusculares]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TreinosAbertosExerciciosRealizados" EntityType="Self.TreinosAbertosExerciciosRealizados" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TreinosAbertosExerciciosRealizados].[IdTreinoAberto] AS [IdTreinoAberto], 
+    [TreinosAbertosExerciciosRealizados].[IdExercicio] AS [IdExercicio]
+    FROM [dbo].[TreinosAbertosExerciciosRealizados] AS [TreinosAbertosExerciciosRealizados]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="TreinosExercicios" EntityType="Self.TreinosExercicios" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [TreinosExercicios].[IdTreino] AS [IdTreino], 
+    [TreinosExercicios].[IdExercicio] AS [IdExercicio]
+    FROM [dbo].[TreinosExercicios] AS [TreinosExercicios]</DefiningQuery>
+    </EntitySet>
+    <EntitySet Name="UsuariosCargos" EntityType="Self.UsuariosCargos" store:Type="Tables" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [UsuariosCargos].[IdUsuario] AS [IdUsuario], 
+    [UsuariosCargos].[IdCargo] AS [IdCargo]
+    FROM [dbo].[UsuariosCargos] AS [UsuariosCargos]</DefiningQuery>
+    </EntitySet>
+    <AssociationSet Name="FK_Exercicios_Maquinas" Association="Self.FK_Exercicios_Maquinas">
+      <End Role="Maquinas" EntitySet="Maquinas" />
+      <End Role="Exercicios" EntitySet="Exercicios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExerciciosGruposMusculares_Exercicios" Association="Self.FK_ExerciciosGruposMusculares_Exercicios">
+      <End Role="Exercicios" EntitySet="Exercicios" />
+      <End Role="ExerciciosGruposMusculares" EntitySet="ExerciciosGruposMusculares" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ExerciciosGruposMusculares_GruposMusculares" Association="Self.FK_ExerciciosGruposMusculares_GruposMusculares">
+      <End Role="GruposMusculares" EntitySet="GruposMusculares" />
+      <End Role="ExerciciosGruposMusculares" EntitySet="ExerciciosGruposMusculares" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Treinos_CategoriasTreino" Association="Self.FK_Treinos_CategoriasTreino">
+      <End Role="CategoriasTreino" EntitySet="CategoriasTreino" />
+      <End Role="Treinos" EntitySet="Treinos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Treinos_UsuariosAluno" Association="Self.FK_Treinos_UsuariosAluno">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Treinos" EntitySet="Treinos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Treinos_UsuariosCriacao" Association="Self.FK_Treinos_UsuariosCriacao">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Treinos" EntitySet="Treinos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TreinosAbertos_Treinos" Association="Self.FK_TreinosAbertos_Treinos">
+      <End Role="Treinos" EntitySet="Treinos" />
+      <End Role="TreinosAbertos" EntitySet="TreinosAbertos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TreinosAbertosExerciciosRealizados_Exercicios" Association="Self.FK_TreinosAbertosExerciciosRealizados_Exercicios">
+      <End Role="Exercicios" EntitySet="Exercicios" />
+      <End Role="TreinosAbertosExerciciosRealizados" EntitySet="TreinosAbertosExerciciosRealizados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TreinosAbertosExerciciosRealizados_TreinosAbertos" Association="Self.FK_TreinosAbertosExerciciosRealizados_TreinosAbertos">
+      <End Role="TreinosAbertos" EntitySet="TreinosAbertos" />
+      <End Role="TreinosAbertosExerciciosRealizados" EntitySet="TreinosAbertosExerciciosRealizados" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TreinosExercicios_Exercicios" Association="Self.FK_TreinosExercicios_Exercicios">
+      <End Role="Exercicios" EntitySet="Exercicios" />
+      <End Role="TreinosExercicios" EntitySet="TreinosExercicios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TreinosExercicios_Treinos" Association="Self.FK_TreinosExercicios_Treinos">
+      <End Role="Treinos" EntitySet="Treinos" />
+      <End Role="TreinosExercicios" EntitySet="TreinosExercicios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Usuarios_Usuarios" Association="Self.FK_Usuarios_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Usuarios1" EntitySet="Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsuariosCargos_Cargos" Association="Self.FK_UsuariosCargos_Cargos">
+      <End Role="Cargos" EntitySet="Cargos" />
+      <End Role="UsuariosCargos" EntitySet="UsuariosCargos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_UsuariosCargos_Usuarios" Association="Self.FK_UsuariosCargos_Usuarios">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="UsuariosCargos" EntitySet="UsuariosCargos" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

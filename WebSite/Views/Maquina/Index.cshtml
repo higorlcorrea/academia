@@ -1,0 +1,101 @@
+﻿@model List<MaquinaModel>
+@{
+    ViewBag.Title = "Máquina";
+}
+
+<div id="page-wrapper" class="page-wrapper-cls">
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-head-line">Máquinas</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <button class="btn btn-raised btn-primary" onclick="window.location.href='@Url.Action("Novo","Maquina")'">Cadastrar</button>
+            </div>
+        </div>
+        @if (TempData["Sucesso"] != null)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-dismissible alert-success">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        @TempData["Sucesso"]
+                    </div>
+                </div>
+            </div>
+        }
+        @if (TempData["Erro"] != null)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-dismissible alert-danger">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        @TempData["Erro"]
+                    </div>
+                </div>
+            </div>
+        }
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        @Mensagens.LISTAGEM
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Nome</th>
+                                        <th class="align-center">Ativo</th>
+                                        <th class="align-center">Editar</th>
+                                        <th class="align-center">Remover</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model != null && Model.Count > 0)
+                                    {
+                                        foreach (var maquina in Model)
+                                        {
+                                            <tr>
+                                                <td>
+                                                    <div class="img-circle img-overflow" >
+                                                        <img src="@maquina.Imagem" alt="@maquina.Nome" width="70" height="70" />
+                                                    </div>
+                                                </td>
+                                                <td>@maquina.Nome</td>
+                                                <td class="align-center">
+                                                    <div class="checkbox">
+                                                        <label>
+                                                            <input disabled type="checkbox" @(maquina.Ativo ? "checked" : "") />
+                                                        </label>
+                                                    </div>
+                                                </td>
+                                                <td class="align-center"><a href="@Url.Action("Editar", "Maquina", new { id = maquina.Id })" title="@Mensagens.EDITAR">@Html.Raw(Botoes.EDITAR)</a></td>
+                                                <td class="align-center"><a href="@Url.Action("Excluir", "Maquina", new { id = maquina.Id })" title="@Mensagens.EXCLUIR">@Html.Raw(Botoes.EXCLUIR)</a></td>
+                                            </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td colspan="3">@Mensagens.SEM_REGISTROS</td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- End  Hover Rows  -->
+            </div>
+        </div>
+
+    </div>
+    <!-- /. PAGE INNER  -->
+</div>

@@ -1,0 +1,5 @@
+C:\Users\Higor Correa\documents\visual studio 2013\Projects\CorpoEmAcao\Academia.Entity\bin\Release\Academia.Entity.dll
+C:\Users\Higor Correa\documents\visual studio 2013\Projects\CorpoEmAcao\Academia.Entity\bin\Release\Academia.Entity.pdb
+C:\Users\Higor Correa\documents\visual studio 2013\Projects\CorpoEmAcao\Academia.Entity\obj\Release\Academia.Entity.csprojResolveAssemblyReference.cache
+C:\Users\Higor Correa\documents\visual studio 2013\Projects\CorpoEmAcao\Academia.Entity\obj\Release\Academia.Entity.dll
+C:\Users\Higor Correa\documents\visual studio 2013\Projects\CorpoEmAcao\Academia.Entity\obj\Release\Academia.Entity.pdb

@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AcademiaContext" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cargos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ativo" Type="Boolean" Nullable="false" />
+    <NavigationProperty Name="Usuarios" Relationship="Self.UsuariosCargos" FromRole="Cargos" ToRole="Usuarios" />
+  </EntityType>
+  <EntityType Name="CategoriaTreino">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Exercicio">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Nome" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Descricao" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Maquina" Relationship="AcademiaContext.ExercicioMaquina" FromRole="Exercicio" ToRole="Maquina" />
+    <Property Name="IdMaquina" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="GruposMusculares">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Nome" Type="String" MaxLength="150" FixedLength="false" Unicode="true" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Maquina">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Nome" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Imagem" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="Ativo" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Periodos">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Descricao" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Ativo" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Treino">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="Descricao" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DiaSemana" Type="Int32" />
+    <NavigationProperty Name="CategoriaTreino" Relationship="Self.FK_Treinos_CategoriasTreino" FromRole="Treinos" ToRole="CategoriasTreino" />
+    <NavigationProperty Name="Aluno" Relationship="Self.FK_Treinos_UsuariosAluno" FromRole="Treinos" ToRole="Usuarios" />
+    <NavigationProperty Name="Personal" Relationship="Self.FK_Treinos_UsuariosCriacao" FromRole="Treinos" ToRole="Usuarios" />
+    <NavigationProperty Name="TreinosAbertos" Relationship="Self.FK_TreinosAbertos_Treinos" FromRole="Treinos" ToRole="TreinosAbertos" />
+    <NavigationProperty Name="Exercicios" Relationship="Self.TreinosExercicios" FromRole="Treinos" ToRole="Exercicios" />
+  </EntityType>
+  <EntityType Name="TreinoAberto">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="DataAbertura" Type="DateTime" Nullable="false" Precision="3" />
+    <NavigationProperty Name="Treino" Relationship="Self.FK_TreinosAbertos_Treinos" FromRole="TreinosAbertos" ToRole="Treinos" />
+    <NavigationProperty Name="ExerciciosRealizados" Relationship="Self.TreinosAbertosExerciciosRealizados" FromRole="TreinosAbertos" ToRole="Exercicios" />
+  </EntityType>
+  <EntityType Name="Usuarios">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" />
+    <Property Name="NomeCompleto" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Cpf" Type="String" MaxLength="14" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="DataNascimento" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="Ativo" Type="Boolean" Nullable="false" />
+    <Property Name="AdicionadoPor" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Treinos" Relationship="Self.FK_Treinos_UsuariosAluno" FromRole="Usuarios" ToRole="Treinos" />
+    <NavigationProperty Name="Treinos1" Relationship="Self.FK_Treinos_UsuariosCriacao" FromRole="Usuarios" ToRole="Treinos" />
+    <NavigationProperty Name="Cargos" Relationship="Self.UsuariosCargos" FromRole="Usuarios" ToRole="Cargos" />
+  </EntityType>
+  <Association Name="FK_Treinos_CategoriasTreino">
+    <End Role="CategoriasTreino" Type="AcademiaContext.CategoriaTreino" Multiplicity="0..1" />
+    <End Role="Treinos" Type="AcademiaContext.Treino" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Treinos_UsuariosAluno">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Treinos" Type="AcademiaContext.Treino" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_Treinos_UsuariosCriacao">
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+    <End Role="Treinos" Type="AcademiaContext.Treino" Multiplicity="*" />
+  </Association>
+  <Association Name="FK_TreinosAbertos_Treinos">
+    <End Role="Treinos" Type="AcademiaContext.Treino" Multiplicity="1" />
+    <End Role="TreinosAbertos" Type="AcademiaContext.TreinoAberto" Multiplicity="*" />
+  </Association>
+  <Association Name="TreinosAbertosExerciciosRealizados">
+    <End Role="Exercicios" Type="AcademiaContext.Exercicio" Multiplicity="*" />
+    <End Role="TreinosAbertos" Type="AcademiaContext.TreinoAberto" Multiplicity="*" />
+  </Association>
+  <Association Name="TreinosExercicios">
+    <End Role="Exercicios" Type="AcademiaContext.Exercicio" Multiplicity="*" />
+    <End Role="Treinos" Type="AcademiaContext.Treino" Multiplicity="*" />
+  </Association>
+  <Association Name="UsuariosCargos">
+    <End Role="Cargos" Type="Self.Cargos" Multiplicity="*" />
+    <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="academiaEntities" annotation:LazyLoadingEnabled="false">
+    <EntitySet Name="Cargos" EntityType="Self.Cargos" />
+    <EntitySet Name="CategoriasTreino" EntityType="AcademiaContext.CategoriaTreino" />
+    <EntitySet Name="Exercicios" EntityType="AcademiaContext.Exercicio" />
+    <EntitySet Name="GruposMusculares" EntityType="Self.GruposMusculares" />
+    <EntitySet Name="Maquinas" EntityType="AcademiaContext.Maquina" />
+    <EntitySet Name="Periodos" EntityType="Self.Periodos" />
+    <EntitySet Name="Treinos" EntityType="AcademiaContext.Treino" />
+    <EntitySet Name="TreinosAbertos" EntityType="AcademiaContext.TreinoAberto" />
+    <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+    <AssociationSet Name="FK_Treinos_CategoriasTreino" Association="Self.FK_Treinos_CategoriasTreino">
+      <End Role="CategoriasTreino" EntitySet="CategoriasTreino" />
+      <End Role="Treinos" EntitySet="Treinos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Treinos_UsuariosAluno" Association="Self.FK_Treinos_UsuariosAluno">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Treinos" EntitySet="Treinos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Treinos_UsuariosCriacao" Association="Self.FK_Treinos_UsuariosCriacao">
+      <End Role="Usuarios" EntitySet="Usuarios" />
+      <End Role="Treinos" EntitySet="Treinos" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TreinosAbertos_Treinos" Association="Self.FK_TreinosAbertos_Treinos">
+      <End Role="Treinos" EntitySet="Treinos" />
+      <End Role="TreinosAbertos" EntitySet="TreinosAbertos" />
+    </AssociationSet>
+    <AssociationSet Name="TreinosAbertosExerciciosRealizados" Association="Self.TreinosAbertosExerciciosRealizados">
+      <End Role="Exercicios" EntitySet="Exercicios" />
+      <End Role="TreinosAbertos" EntitySet="TreinosAbertos" />
+    </AssociationSet>
+    <AssociationSet Name="TreinosExercicios" Association="Self.TreinosExercicios">
+      <End Role="Exercicios" EntitySet="Exercicios" />
+      <End Role="Treinos" EntitySet="Treinos" />
+    </AssociationSet>
+    <AssociationSet Name="UsuariosCargos" Association="Self.UsuariosCargos">
+      <End Role="Cargos" EntitySet="Cargos" />
+      <End Role="Usuarios" EntitySet="Usuarios" />
+    </AssociationSet>
+    <AssociationSet Name="ExercicioMaquina" Association="AcademiaContext.ExercicioMaquina">
+      <End Role="Exercicio" EntitySet="Exercicios" />
+      <End Role="Maquina" EntitySet="Maquinas" />
+    </AssociationSet>
+  </EntityContainer>
+  <Association Name="ExercicioMaquina">
+    <End Type="AcademiaContext.Exercicio" Role="Exercicio" Multiplicity="*" />
+    <End Type="AcademiaContext.Maquina" Role="Maquina" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Maquina">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Exercicio">
+        <PropertyRef Name="IdMaquina" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

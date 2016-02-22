@@ -1,0 +1,1 @@
+﻿$('.login-container').css('min-height', window.innerHeight);

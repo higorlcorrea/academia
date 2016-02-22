@@ -1,0 +1,4 @@
+C:\Users\Higor Correa\documents\visual studio 2013\Projects\CorpoEmAcao\Academia.Entity\bin\Debug\Academia.Entity.dll
+C:\Users\Higor Correa\documents\visual studio 2013\Projects\CorpoEmAcao\Academia.Entity\bin\Debug\Academia.Entity.pdb
+C:\Users\Higor Correa\documents\visual studio 2013\Projects\CorpoEmAcao\Academia.Entity\obj\Debug\Academia.Entity.dll
+C:\Users\Higor Correa\documents\visual studio 2013\Projects\CorpoEmAcao\Academia.Entity\obj\Debug\Academia.Entity.pdb

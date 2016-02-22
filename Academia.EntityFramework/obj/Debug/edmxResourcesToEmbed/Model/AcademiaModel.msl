@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AcademiaModelStoreContainer" CdmEntityContainer="academiaEntities">
+    <EntitySetMapping Name="Cargos">
+      <EntityTypeMapping TypeName="AcademiaModel.Cargo">
+        <MappingFragment StoreEntitySet="Cargos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="CategoriasTreino">
+      <EntityTypeMapping TypeName="AcademiaModel.CategoriaTreino">
+        <MappingFragment StoreEntitySet="CategoriasTreino">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Exercicios">
+      <EntityTypeMapping TypeName="AcademiaModel.Exercicio">
+        <MappingFragment StoreEntitySet="Exercicios">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdMaquina" ColumnName="IdMaquina" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="GruposMusculares">
+      <EntityTypeMapping TypeName="AcademiaModel.GrupoMuscular">
+        <MappingFragment StoreEntitySet="GruposMusculares">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Maquinas">
+      <EntityTypeMapping TypeName="AcademiaModel.Maquina">
+        <MappingFragment StoreEntitySet="Maquinas">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Nome" ColumnName="Nome" />
+          <ScalarProperty Name="Imagem" ColumnName="Imagem" />
+          <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Periodos">
+      <EntityTypeMapping TypeName="AcademiaModel.Periodo">
+        <MappingFragment StoreEntitySet="Periodos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Treinos">
+      <EntityTypeMapping TypeName="AcademiaModel.Treino">
+        <MappingFragment StoreEntitySet="Treinos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdUsuarioAluno" ColumnName="IdUsuarioAluno" />
+          <ScalarProperty Name="IdUsuarioCriacao" ColumnName="IdUsuarioCriacao" />
+          <ScalarProperty Name="IdCategoriaTreino" ColumnName="IdCategoriaTreino" />
+          <ScalarProperty Name="Descricao" ColumnName="Descricao" />
+          <ScalarProperty Name="DiaSemana" ColumnName="DiaSemana" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TreinosAbertos">
+      <EntityTypeMapping TypeName="AcademiaModel.TreinoAberto">
+        <MappingFragment StoreEntitySet="TreinosAbertos">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="IdTreino" ColumnName="IdTreino" />
+          <ScalarProperty Name="DataAbertura" ColumnName="DataAbertura" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Usuarios">
+      <EntityTypeMapping TypeName="AcademiaModel.Usuario">
+        <MappingFragment StoreEntitySet="Usuarios">
+          <ScalarProperty Name="Senha" ColumnName="Senha" />
+          <ScalarProperty Name="Login" ColumnName="Login" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="NomeCompleto" ColumnName="NomeCompleto" />
+          <ScalarProperty Name="Cpf" ColumnName="Cpf" />
+          <ScalarProperty Name="DataNascimento" ColumnName="DataNascimento" />
+          <ScalarProperty Name="Ativo" ColumnName="Ativo" />
+          <ScalarProperty Name="AdicionadoPor" ColumnName="AdicionadoPor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="TreinosAbertosExerciciosRealizados" TypeName="AcademiaModel.TreinosAbertosExerciciosRealizados" StoreEntitySet="TreinosAbertosExerciciosRealizados">
+      <EndProperty Name="Exercicios">
+        <ScalarProperty Name="Id" ColumnName="IdExercicio" />
+      </EndProperty>
+      <EndProperty Name="TreinosAbertos">
+        <ScalarProperty Name="Id" ColumnName="IdTreinoAberto" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TreinosExercicios" TypeName="AcademiaModel.TreinosExercicios" StoreEntitySet="TreinosExercicios">
+      <EndProperty Name="Exercicios">
+        <ScalarProperty Name="Id" ColumnName="IdExercicio" />
+      </EndProperty>
+      <EndProperty Name="Treinos">
+        <ScalarProperty Name="Id" ColumnName="IdTreino" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="UsuariosCargos" TypeName="AcademiaModel.UsuariosCargos" StoreEntitySet="UsuariosCargos">
+      <EndProperty Name="Cargos">
+        <ScalarProperty Name="Id" ColumnName="IdCargo" />
+      </EndProperty>
+      <EndProperty Name="Usuarios">
+        <ScalarProperty Name="Id" ColumnName="IdUsuario" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="ExerciciosGruposMusculares1" TypeName="AcademiaModel.ExerciciosGruposMusculares1" StoreEntitySet="ExerciciosGruposMusculares">
+      <EndProperty Name="GruposMusculares">
+        <ScalarProperty Name="Id" ColumnName="IdGrupoMuscular" />
+      </EndProperty>
+      <EndProperty Name="Exercicios">
+        <ScalarProperty Name="Id" ColumnName="IdExercicio" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

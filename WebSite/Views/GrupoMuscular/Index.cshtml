@@ -1,0 +1,86 @@
+﻿@model List<GrupoMuscularModel>
+@{
+    ViewBag.Title = "Grupo Muscular";
+}
+<div id="page-wrapper" class="page-wrapper-cls">
+    <div id="page-inner">
+        <div class="row">
+            <div class="col-md-12">
+                <h1 class="page-head-line">Grupos Musculares</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <button class="btn btn-raised btn-primary" onclick="window.location.href='@Url.Action("Novo","GrupoMuscular")'">Cadastrar</button>
+            </div>
+        </div>
+        @if (TempData["Sucesso"] != null)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-dismissible alert-success">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        @TempData["Sucesso"]
+                    </div>
+                </div>
+            </div>
+        }
+        @if (TempData["Erro"] != null)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="alert alert-dismissible alert-danger">
+                        <button type="button" class="close" data-dismiss="alert">×</button>
+                        @TempData["Erro"]
+                    </div>
+                </div>
+            </div>
+        }
+        <br />
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        @Mensagens.LISTAGEM
+                    </div>
+                    <div class="panel-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>Nome</th>
+                                        <th class="align-center">Editar</th>
+                                        <th class="align-center">Remover</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @if (Model != null && Model.Count > 0)
+                                    {
+                                        foreach (var grupo in Model)
+                                        {
+                                            <tr>
+                                                <td>@grupo.Nome</td>
+                                                <td class="align-center"><a href="@Url.Action("Editar","GrupoMuscular",new{id=grupo.Id})" title="@Mensagens.EDITAR">@Html.Raw(Botoes.EDITAR)</a></td>
+                                                <td class="align-center"><a href="@Url.Action("Excluir","GrupoMuscular",new{id=grupo.Id})" title="@Mensagens.EXCLUIR">@Html.Raw(Botoes.EXCLUIR)</a></td>
+                                            </tr>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <td colspan="3">@Mensagens.SEM_REGISTROS</td>
+                                        </tr>
+                                    }
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <!-- End  Hover Rows  -->
+            </div>
+        </div>
+
+    </div>
+    <!-- /. PAGE INNER  -->
+</div>

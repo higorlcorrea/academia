@@ -1,0 +1,43 @@
+﻿@model LoginModel
+
+@{
+    ViewBag.Title = "Login";
+}
+@section Css{
+    @Styles.Render("~/LoginCss")
+}
+<div class="login-container">
+    <form action="" class="form-login" method="post">
+        @if (!ViewData.ModelState.IsValid)
+        {
+            @Html.ValidationSummary(true)
+            <br />
+        }
+        <div class="form-group">
+            <label for="login-input-user control-label" class="login__label">
+                @Html.LabelFor(x => x.User)
+            </label>
+            @Html.TextBoxFor(x => x.User, new { id = "login-input-user", @class = "form-control login__input" })
+            @Html.ValidationMessageFor(x => x.User, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label for="login-input-password control-label" class="login__label">
+                @Html.LabelFor(x => x.Password)
+            </label>
+            @Html.PasswordFor(x => x.Password, new { id = "login-input-password", @class = "form-control login__input" })
+            @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <label for="login-sign-up" class="login__label--checkbox">
+                @Html.CheckBoxFor(x => x.ManterLogado, new { id = "login-sign-up", @class = "login__input--checkbox" })
+                Me mantenha conectado
+            </label>
+        </div>
+        <button class="login__submit">Conectar</button>
+    </form>
+    <a href="#" class="login__forgot">Esqueceu a senha?</a>
+</div>
+@section Js{
+    @Scripts.Render("~/LoginJs")
+    @Scripts.Render("~/jqueryval")
+}
