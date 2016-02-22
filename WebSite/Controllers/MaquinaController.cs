@@ -34,6 +34,7 @@ namespace WebSite.Controllers
 
         public ActionResult Index()
         {
+            //Somente testando o push do github...
             List<MaquinaModel> lista = new List<MaquinaModel>();
             try
             {
@@ -144,5 +145,5 @@ namespace WebSite.Controllers
         }
 
         #endregion
-	}
+    }
 }
