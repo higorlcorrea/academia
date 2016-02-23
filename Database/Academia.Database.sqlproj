@@ -60,19 +60,19 @@
     <Folder Include="Tables" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Tables\Usuarios.sql" />
-    <Build Include="Tables\GruposMusculares.sql" />
-    <Build Include="Tables\Maquinas.sql" />
-    <Build Include="Tables\Periodos.sql" />
-    <Build Include="Tables\Exercicios.sql" />
-    <Build Include="Tables\Cargos.sql" />
-    <Build Include="Tables\UsuariosCargos.sql" />
-    <Build Include="Tables\Treinos.sql" />
-    <Build Include="Tables\CategoriasTreino.sql" />
-    <Build Include="Tables\TreinosAbertos.sql" />
-    <Build Include="Tables\TreinosAbertosExerciciosRealizados.sql" />
-    <Build Include="Tables\TreinosExercicios.sql" />
-    <Build Include="Tables\ExerciciosGruposMusculares.sql" />
+    <Build Include="Tables\06. Usuarios.sql" />
+    <Build Include="Tables\04. GruposMusculares.sql" />
+    <Build Include="Tables\02. Maquinas.sql" />
+    <Build Include="Tables\05. Periodos.sql" />
+    <Build Include="Tables\03. Exercicios.sql" />
+    <Build Include="Tables\00. Cargos.sql" />
+    <Build Include="Tables\07. UsuariosCargos.sql" />
+    <Build Include="Tables\08. Treinos.sql" />
+    <Build Include="Tables\01. CategoriasTreino.sql" />
+    <Build Include="Tables\11. TreinosAbertos.sql" />
+    <Build Include="Tables\12. TreinosAbertosExerciciosRealizados.sql" />
+    <Build Include="Tables\10. TreinosExercicios.sql" />
+    <Build Include="Tables\09. ExerciciosGruposMusculares.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="Database.refactorlog" />

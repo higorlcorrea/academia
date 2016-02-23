@@ -62,7 +62,9 @@
     <Compile Include="Repository\UsuarioRepository.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
     <EntityDeploy Include="Model\AcademiaModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>AcademiaModel.Designer.cs</LastGenOutput>
