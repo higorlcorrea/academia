@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="AcademiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="AcademiaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="Cargos">
     <Key>
       <PropertyRef Name="Id" />
@@ -25,7 +25,7 @@
     <Property Name="Descricao" Type="nvarchar(max)" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'academia.dbo.ExerciciosGruposMusculares' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'a.dbo.ExerciciosGruposMusculares' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="ExerciciosGruposMusculares">
     <Key>
       <PropertyRef Name="IdExercicio" />
@@ -78,7 +78,7 @@ warning 6002: The table/view 'academia.dbo.ExerciciosGruposMusculares' does not 
     <Property Name="DataAbertura" Type="datetime" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'academia.dbo.TreinosAbertosExerciciosRealizados' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'a.dbo.TreinosAbertosExerciciosRealizados' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="TreinosAbertosExerciciosRealizados">
     <Key>
       <PropertyRef Name="IdTreinoAberto" />
@@ -88,7 +88,7 @@ warning 6002: The table/view 'academia.dbo.TreinosAbertosExerciciosRealizados' d
     <Property Name="IdExercicio" Type="int" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'academia.dbo.TreinosExercicios' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'a.dbo.TreinosExercicios' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="TreinosExercicios">
     <Key>
       <PropertyRef Name="IdTreino" />
@@ -111,7 +111,7 @@ warning 6002: The table/view 'academia.dbo.TreinosExercicios' does not have a pr
     <Property Name="Senha" Type="nvarchar" MaxLength="20" Nullable="false" />
   </EntityType>
   <!--Errors Found During Generation:
-warning 6002: The table/view 'academia.dbo.UsuariosCargos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'a.dbo.UsuariosCargos' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
   <EntityType Name="UsuariosCargos">
     <Key>
       <PropertyRef Name="IdUsuario" />
