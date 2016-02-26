@@ -34,7 +34,6 @@ namespace WebSite.Controllers
 
         public ActionResult Index()
         {
-            //Somente testando o push do github...
             List<MaquinaModel> lista = new List<MaquinaModel>();
             try
             {
@@ -66,6 +65,12 @@ namespace WebSite.Controllers
             {
                 try
                 {
+                    if (Request.Files.Count > 0)
+                    {
+                        var x = Request.Files[0];
+                        
+                    }
+                    
                     var Maquina = SimpleMapper.Map<MaquinaModel, Maquina>(MaquinaModel);
 
                     _maquinaBusiness.Inserir(Maquina);

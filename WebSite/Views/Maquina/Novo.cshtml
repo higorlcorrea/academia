@@ -11,7 +11,7 @@
                 <h1 class="page-head-line">Máquina</h1>
             </div>
         </div>
-        @{Html.BeginForm("Novo", "Maquina", FormMethod.Post);}
+        @{Html.BeginForm("Novo", "Maquina", FormMethod.Post, new { enctype = "multipart/form-data" });}
         @Html.Partial("_Form", Model)
         @{Html.EndForm();}
     </div>
