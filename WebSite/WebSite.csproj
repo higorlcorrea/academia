@@ -169,6 +169,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Upload.cs" />
     <Compile Include="Mappers\SimpleMapper.cs" />
     <Compile Include="Models\CargoModel.cs" />
     <Compile Include="Models\CategoriaTreinoModel.cs" />
@@ -240,13 +241,13 @@
       <Project>{cda030e1-e252-4836-a851-00d7a5c94732}</Project>
       <Name>Academia.Business</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Academia.EntityFramework\Academia.EntityFramework.csproj">
+    <ProjectReference Include="..\Academia.EntityFramework\Academia.Providers.EntityFramework.csproj">
       <Project>{e6bf6ea0-f4fe-487c-9f60-ddaf58500808}</Project>
-      <Name>Academia.EntityFramework</Name>
+      <Name>Academia.Providers.EntityFramework</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Academia.Entity\Academia.Entity.csproj">
+    <ProjectReference Include="..\Academia.Entity\Academia.Common.Entity.csproj">
       <Project>{eddb4eea-ca11-49e7-81b0-09284876941c}</Project>
-      <Name>Academia.Entity</Name>
+      <Name>Academia.Common.Entity</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

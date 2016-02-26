@@ -67,8 +67,9 @@ namespace WebSite.Controllers
                 {
                     if (Request.Files.Count > 0)
                     {
-                        var x = Request.Files[0];
-                        
+                        var arquivo = Request.Files[0];
+                        var bytes = new byte[arquivo.ContentLength + 1];
+                        arquivo.InputStream.Read(bytes, 0, bytes.Length + 1);
                     }
                     
                     var Maquina = SimpleMapper.Map<MaquinaModel, Maquina>(MaquinaModel);

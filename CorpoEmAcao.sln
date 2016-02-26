@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.21005.1
+VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0. Front", "0. Front", "{84744882-EF0D-4016-8539-25A2BC37C906}"
 EndProject
@@ -11,15 +11,17 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Academia.Database", "Databa
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebSite", "WebSite\WebSite.csproj", "{CF07BF2F-7EA6-4105-9642-FAB142A8EFC5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academia.Entity", "Academia.Entity\Academia.Entity.csproj", "{EDDB4EEA-CA11-49E7-81B0-09284876941C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academia.Common.Entity", "Academia.Entity\Academia.Common.Entity.csproj", "{EDDB4EEA-CA11-49E7-81B0-09284876941C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academia.EntityFramework", "Academia.EntityFramework\Academia.EntityFramework.csproj", "{E6BF6EA0-F4FE-487C-9F60-DDAF58500808}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academia.Providers.EntityFramework", "Academia.EntityFramework\Academia.Providers.EntityFramework.csproj", "{E6BF6EA0-F4FE-487C-9F60-DDAF58500808}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Academia.Business", "Academia.Business\Academia.Business.csproj", "{CDA030E1-E252-4836-A851-00D7A5C94732}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Database", "4. Database", "{E7E2DF6B-E4FC-4FE2-A19A-159EB75BDAA2}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Database", "5. Database", "{E7E2DF6B-E4FC-4FE2-A19A-159EB75BDAA2}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Entity", "3. Entity", "{D4C80B04-0A0F-40BD-812E-891A86B9469A}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Common", "3. Common", "{D4C80B04-0A0F-40BD-812E-891A86B9469A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Providers", "4. Providers", "{586A9C3C-EE58-4260-A2AD-8E4FC86D7E13}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,10 +55,10 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{CF07BF2F-7EA6-4105-9642-FAB142A8EFC5} = {84744882-EF0D-4016-8539-25A2BC37C906}
-		{CDA030E1-E252-4836-A851-00D7A5C94732} = {E79F640C-39AA-457B-B5BA-79BA7E31F5F9}
 		{46179027-7193-4863-9524-EAE3932C11EE} = {E7E2DF6B-E4FC-4FE2-A19A-159EB75BDAA2}
-		{E6BF6EA0-F4FE-487C-9F60-DDAF58500808} = {D4C80B04-0A0F-40BD-812E-891A86B9469A}
+		{CF07BF2F-7EA6-4105-9642-FAB142A8EFC5} = {84744882-EF0D-4016-8539-25A2BC37C906}
 		{EDDB4EEA-CA11-49E7-81B0-09284876941C} = {D4C80B04-0A0F-40BD-812E-891A86B9469A}
+		{E6BF6EA0-F4FE-487C-9F60-DDAF58500808} = {586A9C3C-EE58-4260-A2AD-8E4FC86D7E13}
+		{CDA030E1-E252-4836-A851-00D7A5C94732} = {E79F640C-39AA-457B-B5BA-79BA7E31F5F9}
 	EndGlobalSection
 EndGlobal
